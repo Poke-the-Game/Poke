@@ -6,12 +6,12 @@ $(function(){
     Client.render(function(cmd, data) {
         if(cmd=="add_gobj") {
             $('<div class="'+data.type+'" id="'+data.id+'">')
-                .css({top: data.x, left: data.y, zIndex:data.z})
+                .css({left: data.x, top: data.y, zIndex:data.z})
                 .appendTo($("#field"))//TODO store field somewhere
         }
 
         if(cmd=="move_gobj") {
-            console.log($('#'+data.id).css({top: data.x, left: data.y}), data)
+            console.log($('#'+data.id).css({left: data.x, top: data.y}), data)
         }
 
         console.log(cmd);
