@@ -62,13 +62,19 @@ h1 {
 	margin-left: -5px;
 }
 
-.snake.head {
-	border-radius: 25%;
+.snake.left {
 	background-color: #0f0;
 }
 
+.snake.right {
+	background-color: #00f;
+}
+
+.snake.head {
+	border-radius: 25%;
+}
+
 .snake.body {
-	background-color: #0f0;
 }
 
 #menu {
