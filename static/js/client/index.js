@@ -101,7 +101,7 @@ $(function(){
         .show()
         .text(timeout.toString())
         .fadeOut(1000, function(){
-            if(timeout !== 0){
+            if(timeout !== 1){
                 MakeTimeout(timeout - 1);
             } else {
                 $("div.countdown").remove();
@@ -115,8 +115,19 @@ $(function(){
         //hide all the links
         ConnGUI.hide();
 
+        if(side == "left"){
+            $(".name_left").text(name);
+            $(".name_right").text(opponent);
+        } else {
+            $(".name_right").text(name);
+            $(".name_left").text(opponent);
+        }
+
         //log the opponent
-        MakeTimeout((delay / 1000) - 1);
+        MakeTimeout((delay / 1000));
+
+        $(".name_right").fadeOut(delay);
+        $(".name_left").fadeOut(delay);
 
         GameReady = true;
     }, function(){
