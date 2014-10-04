@@ -9,7 +9,7 @@ ConnectionManager.prototype.ready = function(handler){
     var self = this;
 
     //we are ready.
-    this.socket.on("start", function(data){
+    this.socket.on("ready", function(data){
         //Call the opponent
         handler.call(this, self.socket, data.names);
     });

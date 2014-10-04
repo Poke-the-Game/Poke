@@ -5,8 +5,7 @@ var
 
     ConnectionHost = require('./lib/ConnectionHost.js').ConnectionHost;
 
-//
-
+//Winston: Logging
 winston.remove(winston.transports.Console);
 winston.add(winston.transports.Console, {
   prettyPrint: true,
@@ -17,8 +16,8 @@ winston.add(winston.transports.Console, {
 
 //Handle errors which aren't caught.
 process.on('uncaughtException', function(err) {
+    //log the errors
     try{
-        winston.error("ERROR: ", err.toString());
         winston.error(err.stack);
     } catch(e){
         winston.error("ERROR: Error handling error. ");
@@ -27,16 +26,11 @@ process.on('uncaughtException', function(err) {
     }
 });
 
-//Set up app + stuff
+//Create new express JS things
 var app = express();
 var http = require('http').Server(app);
-
-//Socket io
 var io = require('socket.io')(http);
-
 app.use(express.static(__dirname + '/static'));
-
-
 http.listen(3000, function(){
   winston.info('listening on *:3000');
 });
