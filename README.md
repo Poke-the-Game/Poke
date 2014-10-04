@@ -1,6 +1,6 @@
 # Poke The Game
 
-Ping + Snake = Poke
+Pong + Snake = Poke
 
 ## Install
 
