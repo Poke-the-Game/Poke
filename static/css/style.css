@@ -47,7 +47,7 @@ h1 {
 	height:50px;
 }
 
-.ball, .snake_head, .snake_body {
+.ball, .snake, .snake {
 	position: absolute;
 	width:10px;
 	height:10px;
@@ -58,11 +58,11 @@ h1 {
 	background-color: #fff;
 }
 
-.snake_head {
+.snake.head {
 	border-radius: 25%;
 	background-color: #0f0;
 }
 
-.snake_body {
+.snake.body {
 	background-color: #0f0;
 }
