@@ -6,6 +6,17 @@ ConnectionGUI.prototype.hide = function(){
     $("#menu").hide();
 }
 
+ConnectionGUI.prototype.clear_agent = function(){
+    try{
+        this._agent.speak("");
+        this._agent.stop();
+        this._agent._el.remove();
+        this._agent._balloon._content.parent().remove();
+        this._agent = undefined;
+    } catch(e){}
+
+}
+
 ConnectionGUI.prototype.moveUp = function(){
     $("#menu").trigger("cursor.up");
 }
@@ -15,8 +26,6 @@ ConnectionGUI.prototype.moveDown = function(){
 }
 
 ConnectionGUI.prototype.doTab = function(rev){
-
-    console.log(rev);
 
     var as = $("#menu").find("a");
 
@@ -243,10 +252,38 @@ ConnectionGUI.prototype.init = function(){
     });
 }
 
+var Things = [
+    "Looks like you're trying to play some POKE THE GAME. Need some help?",
+    "Some useful information: This project was written at Jacobshack 2014. Clippy existed from before. ",
+
+];
+
 ConnectionGUI.prototype.begin_query = function(){
 
     var me = this;
-    //List the people
+
+    //Clear any old agent
+    me.clear_agent();
+
+    //here is an eastergg
+    var chance = Math.random();
+
+    //Do something with a 5% chance
+    if(chance >= 0.95){
+        clippy.load('Clippy', function(agent) {
+            // Do anything with the loaded agent
+            agent.show();
+            agent.stop();
+
+            //This is the agent
+            me._agent = agent;
+
+            //Say a random thing.
+            var thing = Math.round(Math.random()*(Things.length - 1));
+            agent.speak(Things[thing]);
+        });
+    }
+
 
     me.select("What do you want to do?",
         [
@@ -257,6 +294,10 @@ ConnectionGUI.prototype.begin_query = function(){
             "EXIT"
         ],
         function(index, res){
+
+            //Clear any old agent
+            me.clear_agent();
+
             if(index == 0){
                 me.create_new(false);
             } else if(index == 3){
@@ -431,6 +472,7 @@ ConnectionGUI.prototype.about_legal = function(){
         <a href='https://github.com/broofa/node-uuid' target='_blank'>node-uuid</a> 1.4.1, licensed under <a href='https://github.com/broofa/node-uuid/blob/master/LICENSE.md' target='_blank'>MIT License</a> <br />\
         <a href='http://socket.io/' target='_blank'>Socket.IO</a> 1.1.0, licensed under <a href='https://github.com/Automattic/socket.io/blob/master/LICENSE' target='_blank'>MIT License</a> <br />\
         <a href='https://github.com/flatiron/winston' target='_blank'>winston</a> 0.8.0, licensed under <a href='https://github.com/flatiron/winston/blob/master/LICENSE' target='_blank'>MIT License</a> <br />\
+        <a href='https://www.smore.com/clippy-js' target='_blank'>CLIPPY.JS</a>, licensed under <a href='https://github.com/smore-inc/clippy.js/blob/master/MIT-LICENSE.txt' target='_blank'>MIT License</a> <br />\
         "
     ).insertAfter(
         $("#menu").find("h2")
