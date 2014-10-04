@@ -37,8 +37,8 @@ ConnectionManager.prototype.render = function(handler) {
 }
 
 ConnectionManager.prototype.update_score = function(handler) {
-	this.socket.on("update_score", function(score){
-        handler.call(this, score);
+	this.socket.on("update_score", function(data){
+        handler.call(this, data);
     });
 }
 
