@@ -3,7 +3,7 @@ var
     express = require('express'),
     winston = require('winston'),
 
-    ConnectionManager = require('./lib/ConnectionHost.js').ConnectionHost;
+    ConnectionHost = require('./lib/ConnectionHost.js').ConnectionHost;
 
 //
 
@@ -42,5 +42,4 @@ http.listen(3000, function(){
 });
 
 //Start a connection manager
-var manager = new ConnectionManager(io);
-manager.init();
+var manager = new ConnectionHost(io);

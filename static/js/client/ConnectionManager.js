@@ -1,5 +1,7 @@
 var ConnectionManager = function(){
-    this.socket = io();
+    this.socket = io({
+    reconnection: false
+});
 }
 
 ConnectionManager.prototype.ready = function(handler){
@@ -7,14 +9,17 @@ ConnectionManager.prototype.ready = function(handler){
     var self = this;
 
     //we are ready.
-    this.socket.on("ready", function(data){
+    this.socket.on("start", function(data){
         //Call the opponent
-        console.log("ON_READY_EVENT");
-        ready.call(this, self.socket, data.names);
+        handler.call(this, self.socket, data.names);
     });
+
+    this.socket.on("log", function(a){
+        console.log(a);
+    })
 }
 
 ConnectionManager.prototype.start = function(name){
     //Send Client Event to server
-    this.socket.emit("client_ready", name);
+    this.socket.emit("client_begin", name);
 }
