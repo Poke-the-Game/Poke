@@ -287,9 +287,9 @@ ConnectionGUI.prototype.begin_query = function(){
 
     me.select("What do you want to do?",
         [
+            "Quick Start",
             "Create a new game",
             "Join an existing game",
-            "Select automatically",
             "ABOUT & HELP",
             "EXIT"
         ],
@@ -298,7 +298,7 @@ ConnectionGUI.prototype.begin_query = function(){
             //Clear any old agent
             me.clear_agent();
 
-            if(index == 0){
+            if(index == 1){
                 me.create_new(false);
             } else if(index == 3){
                 me.about_box();
@@ -308,15 +308,14 @@ ConnectionGUI.prototype.begin_query = function(){
                 me.alert("Loading list of people from the server ...", true);
 
                 me.the_client.list(function(lbys){
-                    if(index == 1){
+                    if(index == 2){
                         me.join(lbys);
                     } else {
                         me.auto(lbys);
                     }
                 });
             }
-        },
-        2
+        }
     );
 }
 
@@ -352,7 +351,7 @@ ConnectionGUI.prototype.join = function(lbys){
 
     lbys.push("CANCEL");
 
-    me.select("Which lobby do you want to join?", lbys, function(index, element){
+    me.select("Which player do you want to play with?", lbys, function(index, element){
         if(index !== lbys.length - 1){
             me.do_join(element);
         } else {
