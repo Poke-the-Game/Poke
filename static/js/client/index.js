@@ -73,7 +73,7 @@ $(function(){
     });
 
     Client.update_score(function(score) {
-        
+
     });
 
     //we are ready
@@ -86,6 +86,8 @@ $(function(){
         console.log(opp);
 
         GameReady = true;
+    }, function(){
+        ConnGUI.disconnect();
     });
 
     ConnGUI.init();

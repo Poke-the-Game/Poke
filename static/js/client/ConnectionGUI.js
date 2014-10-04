@@ -3,7 +3,7 @@ var ConnectionGUI = function(cli){
 };
 
 ConnectionGUI.prototype.hide = function(){
-    $("#menu").remove();
+    $("#menu").hide();
 }
 
 ConnectionGUI.prototype.moveUp = function(){
@@ -16,6 +16,7 @@ ConnectionGUI.prototype.moveDown = function(){
 
 ConnectionGUI.prototype.empty = function(){
     return $("#menu")
+    .show()
     .off("click")
     .off("cursor.up")
     .off("cursor.down")
@@ -279,9 +280,9 @@ ConnectionGUI.prototype.auto = function(lbys){
 ConnectionGUI.prototype.disconnect = function(){
     var me = this;
 
-    me.select("You have disconnected. ", ["Reconnect"], function(){
+    me.select("Disconnected. ", ["Reconnect"], function(){
         window.location.reload();
     });
-    
+
     me.the_client.disconnect();
 }
