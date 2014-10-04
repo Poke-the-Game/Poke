@@ -23,6 +23,8 @@ h1 {
 	height:480px;
 	left:50%;
 	margin-left: -320px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	border: 1px solid #ccc;
 }
 
@@ -37,6 +39,7 @@ h1 {
 .score {
 	position: absolute;
 	top:20px;
+	opacity: 0.5;
 }
 
 .score .digit {
