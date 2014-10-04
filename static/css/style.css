@@ -58,6 +58,8 @@ h1 {
 .ball {
 	border-radius: 50%;
 	background-color: #fff;
+	margin-top: -5px;
+	margin-left: -5px;
 }
 
 .snake.head {
