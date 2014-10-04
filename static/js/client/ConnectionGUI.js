@@ -14,6 +14,40 @@ ConnectionGUI.prototype.moveDown = function(){
     $("#menu").trigger("cursor.down");
 }
 
+ConnectionGUI.prototype.doTab = function(){
+    var as = $("#menu").find("a");
+
+    var index = (function(){
+        for(var i=0;i<as.length;i++){
+            if(as.eq(i).hasClass("active")) {
+                return i;
+            }
+        }
+
+        return -1;
+    })();
+
+    index++;
+
+    if(index >= as.length){
+        //OK, thats it => return to the default;
+        as
+        .removeClass("active");
+
+        $("#menu").click();
+
+        return;
+    }
+
+    as
+    .removeClass("active")
+    .eq(index)
+    .addClass("active")
+    .focus();
+
+
+}
+
 ConnectionGUI.prototype.empty = function(){
     return $("#menu")
     .show()
@@ -100,10 +134,10 @@ ConnectionGUI.prototype.select = function(msg, options, next, start_opt){
         var form = prompt.find("form");
 
         //Remove old span
-        form.find("span").remove();
+        form.find("span.wrapper").remove();
 
         //make a span
-        var span = $("<span>").prependTo(form);
+        var span = $("<span class='wrapper'>").prependTo(form);
 
 
         options.map(function(element, index){
@@ -111,12 +145,26 @@ ConnectionGUI.prototype.select = function(msg, options, next, start_opt){
             //do nothing
             if(index == curIndex){
                 span.append(
-                    $("<span class='selected'>").text(element),
+                    $("<span class='selected'>").text(element).click(function(){
+                        curIndex = index;
+                        redraw();
+                    }).dblclick(function(){
+                        curIndex = index;
+                        redraw();
+                        form.submit();
+                    }),
                     "<br />"
                 );
             } else {
                 span.append(
-                    $("<span>").text(element),
+                    $("<span>").text(element).click(function(){
+                        curIndex = index;
+                        redraw();
+                    }).dblclick(function(){
+                        curIndex = index;
+                        redraw();
+                        form.submit();
+                    }),
                     "<br />"
                 );
             }
@@ -189,13 +237,16 @@ ConnectionGUI.prototype.begin_query = function(){
             "Create a new game",
             "Join an existing game",
             "Select automatically",
-            "CANCEL"
+            "ABOUT & HELP",
+            "EXIT"
         ],
         function(index, res){
             if(index == 0){
                 me.create_new(false);
             } else if(index == 3){
-                    me.disconnect();
+                me.about_box();
+            } else if(index == 4){
+                me.disconnect();
             } else {
                 me.alert("Loading list of people from the server ...", true);
 
@@ -285,4 +336,87 @@ ConnectionGUI.prototype.disconnect = function(){
     });
 
     me.the_client.disconnect();
+}
+
+
+ConnectionGUI.prototype.about_box = function(start){
+
+    var me = this;
+
+    me.select("About & Help", ["What is POKE THE GAME?", "How to play?", "Legal", "BACK"], function(index, element){
+        if(element == "BACK"){
+            me.begin_query();
+        } else {
+            if(index == 0){
+                me.about_about();
+            } else if(index == 1){
+                me.about_play();
+            } else {
+                me.about_legal();
+            }
+        }
+    }, start);
+}
+
+
+ConnectionGUI.prototype.about_about = function(){
+
+    var me = this;
+
+    me.alert("What is POKE THE GAME?", function(){
+        me.about_box(0);
+    });
+
+    $("<div class='box'>").html(
+        "PONG + SNAKE = POKE <br /> \
+        made by <br />\
+        <a href='https://github.com/kpj' target='_blank'>@kpj</a>, \
+        <a href='https://github.com/moritzmhmk' target='_blank'>@moritzmhmk</a>, \
+        <a href='https://github.com/nk17' target='_blank'>@nk17</a> and \
+        <a href='https://github.com/tkw1536' target='_blank'>@tkw1536</a> <br>\
+        Source code at <a href='https://github.com/Poke-the-Game/Poke' target='_blank'>https://github.com/Poke-the-Game/Poke</a> "
+    ).insertAfter(
+        $("#menu").find("h2")
+    );
+}
+
+ConnectionGUI.prototype.about_play = function(){
+
+    var me = this;
+
+    me.alert("How to play?", function(){
+        me.about_box(1);
+    });
+
+    $("<div class='box'>").html(
+        "Move your SNAKE to protect your goal and collect the POWERUPS. <br /><br />Score a GOAL to gain points. <br /><br />Use UP, RIGHT, DOWN, LEFT or W, A, S, D to control your snake. <br />Press ENTER to navigate menus. <br />Press TAB to highlight links. "
+    ).insertAfter(
+        $("#menu").find("h2")
+    );
+}
+
+ConnectionGUI.prototype.about_legal = function(){
+
+    var me = this;
+
+    me.alert("Legal", function(){
+        me.about_box(2);
+    });
+
+    $("<div class='box'>").html(
+        "POKE THE GAME<br /> \
+        (c) 2014 The <a href='https://github.com/Poke-the-Game' target='_blank'>POKE THE GAME</a> Team <br />\
+        Licensed under <a href='https://github.com/Poke-the-Game/Poke/blob/master/LICENSE' target='_blank'>MIT License</a><br />\
+        <br /><br /><h2>Used works</h2><br /> \
+        \
+        <a href='https://www.google.com/fonts/specimen/Press+Start+2P' target='_blank'>Press Start 2P Font</a>, licensed under <a href='http://scripts.sil.org/OFL' target='_blank'>SIL Open Font License, 1.1</a> <br />\
+        <a href='https://jquery.org/' target='_blank'>jQuery</a> 2.1.0, licensed under <a href='https://jquery.org/license/' target='_blank'>MIT License</a> <br />\
+        <a href='http://expressjs.com/' target='_blank'>ExpressJS</a> 4.9.5, licensed under <a href='https://github.com/strongloop/express/blob/master/LICENSE' target='_blank'>MIT License</a> <br />\
+        <a href='https://github.com/broofa/node-uuid' target='_blank'>node-uuid</a> 1.4.1, licensed under <a href='https://github.com/broofa/node-uuid/blob/master/LICENSE.md' target='_blank'>MIT License</a> <br />\
+        <a href='http://socket.io/' target='_blank'>Socket.IO</a> 1.1.0, licensed under <a href='https://github.com/Automattic/socket.io/blob/master/LICENSE' target='_blank'>MIT License</a> <br />\
+        <a href='https://github.com/flatiron/winston' target='_blank'>winston</a> 0.8.0, licensed under <a href='https://github.com/flatiron/winston/blob/master/LICENSE' target='_blank'>MIT License</a> <br />\
+        "
+    ).insertAfter(
+        $("#menu").find("h2")
+    );
 }

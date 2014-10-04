@@ -96,5 +96,21 @@ input[type=text], span.selected{
 }
 
 h1 {
-	color: white; 
+	color: white;
+}
+
+div.box {
+	margin-top: 5px;
+}
+
+
+a {
+	color: gray;
+	text-decoration: none;
+	font-style: italic;
+}
+
+a:hover, a:active, a.active {
+	outline: none; 
+	color: white;
 }

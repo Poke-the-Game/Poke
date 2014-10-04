@@ -12,10 +12,14 @@ $(function(){
 
         var UP = 38;
         var W = 87;
+
         var RIGHT = 39;
         var D = 68;
+
         var DOWN = 40;
         var S = 83;
+
+        var TAB = 9;
 
         if(GameReady){
             if ( event.which == LEFT  || event.which  == A) {
@@ -51,6 +55,11 @@ $(function(){
 
             if(event.which == S){
                 ConnGUI.moveDown();
+            }
+
+            if(event.which == TAB){
+                event.preventDefault(); 
+                ConnGUI.doTab();
             }
         }
 
