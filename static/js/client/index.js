@@ -72,6 +72,10 @@ $(function(){
 
     });
 
+    Client.update_score(function(score) {
+        
+    });
+
     //we are ready
     Client.ready(function(connection, opp){
 

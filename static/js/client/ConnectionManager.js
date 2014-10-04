@@ -36,6 +36,13 @@ ConnectionManager.prototype.render = function(handler) {
     });
 }
 
+ConnectionManager.prototype.update_score = function(handler) {
+	this.socket.on("update_score", function(score){
+        handler.call(this, score);
+    });
+}
+
+
 ConnectionManager.prototype.start = function(name){
     //Send Client Event to server
     this.socket.emit("lobby_begin", name);
