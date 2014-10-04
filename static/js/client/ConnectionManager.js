@@ -3,8 +3,15 @@ var ConnectionManager = function(){
 }
 
 ConnectionManager.prototype.ready = function(handler){
+
+    var self = this;
+
     //we are ready.
-    this.socket.on("ready", handler);
+    this.socket.on("ready", function(data){
+        //Call the opponent
+        console.log("ON_READY_EVENT");
+        ready.call(this, self.socket, data.names);
+    });
 }
 
 ConnectionManager.prototype.start = function(name){

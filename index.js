@@ -3,13 +3,10 @@ var
     express = require('express'),
     winston = require('winston'),
 
-
     ConnectionManager = require('./lib/ConnectionHost.js').ConnectionHost;
 
+//
 
-
-
-//LOgger
 winston.remove(winston.transports.Console);
 winston.add(winston.transports.Console, {
   prettyPrint: true,
