@@ -97,6 +97,10 @@ input[type=text], span.selected{
 	color: white;
 }
 
+span.tabbed{
+	color:grey; 
+}
+
 h1 {
 	color: white;
 }
@@ -113,6 +117,6 @@ a {
 }
 
 a:hover, a:active, a.active {
-	outline: none; 
+	outline: none;
 	color: white;
 }

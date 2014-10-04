@@ -58,8 +58,8 @@ $(function(){
             }
 
             if(event.which == TAB){
-                event.preventDefault(); 
-                ConnGUI.doTab();
+                event.preventDefault();
+                ConnGUI.doTab(event.shiftKey);
             }
         }
 
@@ -87,7 +87,7 @@ $(function(){
         var score = data.score.toString()
         for(var i in score) {
             $score.append($('<img src="img/digits/'+score[i]+'.png" class="digit">'))
-        } 
+        }
     });
 
     //we are ready

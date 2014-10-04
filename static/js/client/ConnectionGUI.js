@@ -14,7 +14,10 @@ ConnectionGUI.prototype.moveDown = function(){
     $("#menu").trigger("cursor.down");
 }
 
-ConnectionGUI.prototype.doTab = function(){
+ConnectionGUI.prototype.doTab = function(rev){
+
+    console.log(rev);
+
     var as = $("#menu").find("a");
 
     var index = (function(){
@@ -27,17 +30,30 @@ ConnectionGUI.prototype.doTab = function(){
         return -1;
     })();
 
-    index++;
+    if(rev){
+        if(index == -1){
+            index = as.length - 1;
+        } else {
+            index--;
+        }
+    } else {
+        index++;
+    }
 
-    if(index >= as.length){
+
+    if(index >= as.length || index  == -1){
         //OK, thats it => return to the default;
         as
         .removeClass("active");
 
         $("#menu").click();
 
+        $("span.selected").removeClass("tabbed");
+
         return;
     }
+
+    $("span.selected").addClass("tabbed");
 
     as
     .removeClass("active")
