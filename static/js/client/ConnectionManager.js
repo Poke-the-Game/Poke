@@ -7,10 +7,10 @@ var ConnectionManager = function(){
     //Log messages.
     this.socket.on("log", function(a){
         console.log(a);
-    })
+    });
 }
 
-ConnectionManager.prototype.ready = function(handler){
+ConnectionManager.prototype.ready = function(handler, on_end){
     var self = this;
 
     //we are ready.
@@ -18,6 +18,9 @@ ConnectionManager.prototype.ready = function(handler){
         //Call the opponent
         handler.call(this, self.socket, data.names);
     });
+
+    //disconnect handler
+    this.socket.on("disconnect", on_end);
 }
 
 ConnectionManager.prototype.render = function(handler) {

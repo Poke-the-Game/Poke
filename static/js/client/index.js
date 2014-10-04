@@ -72,6 +72,7 @@ $(function(){
 
     });
 
+
     Client.update_score(function(data) {
         console.log(data);
         $score = $('#'+data.pos+'_score').html('');
@@ -91,6 +92,8 @@ $(function(){
         console.log(opp);
 
         GameReady = true;
+    }, function(){
+        ConnGUI.disconnect();
     });
 
     ConnGUI.init();
