@@ -16,7 +16,9 @@ ConnectionManager.prototype.ready = function(handler, on_end){
     //we are ready.
     this.socket.on("ready", function(data){
         //Call the opponent
-        handler.call(this, self.socket, data.names);
+        console.log(data);
+
+        handler.call(this, self.socket, data.delay, data.side, data.name, data.opponent);
     });
 
     //disconnect handler

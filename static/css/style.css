@@ -106,7 +106,7 @@ input[type=text], span.selected{
 }
 
 span.tabbed{
-	color:grey; 
+	color:grey;
 }
 
 h1 {
@@ -139,4 +139,23 @@ a:hover, a:active, a.active {
 }
 @-webkit-keyframes blink {
   to { visibility: hidden; }
+}
+
+div.countdown {
+	width: 100px;
+    height: 50px;
+
+    position: relative;
+
+    top:50%;
+	left: 50%;
+
+	margin-top: -25px;
+	margin-left: -50px;
+
+	font-size: 50px;
+	text-align: center;
+
+	/* fix to remove really ugly border artificats*/
+	border: 3px solid rgba(0, 0, 0, 0);
 }

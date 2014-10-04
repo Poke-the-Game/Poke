@@ -96,14 +96,27 @@ $(function(){
         }
     });
 
+    var MakeTimeout = function(timeout){
+        $("div.countdown")
+        .show()
+        .text(timeout.toString())
+        .fadeOut(1000, function(){
+            if(timeout !== 0){
+                MakeTimeout(timeout - 1);
+            } else {
+                $("div.countdown").remove();
+            }
+        });
+    }
+
     //we are ready
-    Client.ready(function(connection, opp){
+    Client.ready(function(connection, delay, side, name, opponent){
 
         //hide all the links
         ConnGUI.hide();
 
         //log the opponent
-        console.log(opp);
+        MakeTimeout((delay / 1000) - 1);
 
         GameReady = true;
     }, function(){
