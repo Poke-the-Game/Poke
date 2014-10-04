@@ -1,8 +1,10 @@
 var ConnectionManager = function(){
+    //Create a socket.
     this.socket = io({
-    	reconnection: false
-	});
+        reconnection: false
+    });
 
+    //Log messages.
     this.socket.on("log", function(a){
         console.log(a);
     })
@@ -31,15 +33,40 @@ ConnectionManager.prototype.render = function(handler) {
 
     this.socket.on("remove_gobj", function(data){
         handler.call(this, "remove_gobj", data);
-    })
-
+    });
 }
 
 ConnectionManager.prototype.start = function(name){
     //Send Client Event to server
-    this.socket.emit("client_begin", name);
+    this.socket.emit("lobby_begin", name);
+}
+
+ConnectionManager.prototype.host = function(on_request){
+    //on_request = function(form, respond){respond(true); }
+
+    var self = this;
+
+    this.socket.on("lobby_answer_request", function(from){
+        on_request(from, function(answer){
+            self.socket.emit("lobby_answer_request", answer?true:false);
+        });
+    })
+
+    //We are creating a new lobby
+    this.socket.emit("lobby_new");
+}
+
+
+ConnectionManager.prototype.joinLobby = function(name, on_response){
+    this.socket.on("lobby_request_join", on_response);
+    this.socket.emit("lobby_request_join", name);
+}
+
+ConnectionManager.prototype.list = function(callback){
+    this.socket.on("lobby_list", callback);
+    this.socket.emit("lobby_list");
 }
 
 ConnectionManager.prototype.set_snake_direction = function(deg) {
 	this.socket.emit("snake_direction", deg);
-} 
+}

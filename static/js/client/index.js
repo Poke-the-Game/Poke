@@ -47,6 +47,42 @@ $(function(){
         console.log(opp);
     });
 
-    //Let's go!
+    //OK, we want our names.
     Client.start(prompt("Enter your name: "));
-})
+
+    whatToDo = function(){
+        Client.list(function(lbys){
+            var text = lbys.join("\n");
+
+            text = "The following player(s) do not currently have partners: \n\n\n"
+            + text
+            + "\nDo you want to join one game? Click OK to join a game or CANCEL to create a new one. ";
+
+            //Do we want to join or create a new one.
+            if(!confirm(text)){
+
+                alert("Will now accept requests. "); 
+
+                Client.host(function(who, respond){
+                    var q = confirm("'" + who + "' wants to play with you? \nAccept the request?")
+                    respond(q);
+                });
+            } else {
+                //Who we want to join
+                var who = prompt("Enter the name of the person you want to join. ");
+
+                Client.joinLobby(who, function(answer){
+                    if(!answer){
+                        alert("Unable to join the specefied game. ");
+                        whatToDo();
+                    }
+                });
+            }
+
+        });
+    };
+
+
+    window.start = whatToDo;
+
+});
