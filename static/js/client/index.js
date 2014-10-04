@@ -74,7 +74,6 @@ $(function(){
 
 
     Client.update_score(function(data) {
-        console.log(data);
         $score = $('#'+data.pos+'_score').html('');
         var score = data.score.toString()
         for(var i in score) {
