@@ -46,6 +46,8 @@ ConnectionManager.prototype.host = function(on_request){
 
     var self = this;
 
+    this.socket.removeEventListener("lobby_answer_request");
+
     this.socket.on("lobby_answer_request", function(from){
         on_request(from, function(answer){
             self.socket.emit("lobby_answer_request", answer?true:false);
@@ -58,13 +60,20 @@ ConnectionManager.prototype.host = function(on_request){
 
 
 ConnectionManager.prototype.joinLobby = function(name, on_response){
+
+    this.socket.removeEventListener("lobby_request_join");
+
     this.socket.on("lobby_request_join", on_response);
     this.socket.emit("lobby_request_join", name);
 }
 
 ConnectionManager.prototype.list = function(callback){
-    this.socket.on("lobby_list", callback);
+    this.socket.once("lobby_list", callback);
     this.socket.emit("lobby_list");
+}
+
+ConnectionManager.prototype.disconnect = function(){
+    this.socket.disconnect();
 }
 
 ConnectionManager.prototype.set_snake_direction = function(deg) {

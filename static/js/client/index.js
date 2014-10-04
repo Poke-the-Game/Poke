@@ -2,28 +2,46 @@
 $(function(){
     //create a client
     var Client = new ConnectionManager();
+    var ConnGUI = new ConnectionGUI(Client);
+
+    var GameReady = false;
 
     $( "body" ).keydown(function( event ) {
         var LEFT = 37;
         var UP = 38;
         var RIGHT = 39;
         var DOWN = 40;
-        if ( event.which == LEFT ) {
-            event.preventDefault();
-            Client.set_snake_direction(270);
+
+        if(GameReady){
+            if ( event.which == LEFT ) {
+                event.preventDefault();
+                Client.set_snake_direction(270);
+            }
+            if ( event.which == UP ) {
+                event.preventDefault();
+                Client.set_snake_direction(0);
+            }
+            if ( event.which == RIGHT ) {
+                event.preventDefault();
+                Client.set_snake_direction(90);
+            }
+            if ( event.which == DOWN ) {
+                event.preventDefault();
+                Client.set_snake_direction(180);
+            }
+        } else {
+            if ( event.which == UP ) {
+                event.preventDefault();
+                ConnGUI.moveUp();
+            }
+
+            if ( event.which == DOWN ) {
+                event.preventDefault();
+                ConnGUI.moveDown();
+            }
         }
-        if ( event.which == UP ) {
-            event.preventDefault();
-            Client.set_snake_direction(0);
-        }
-        if ( event.which == RIGHT ) {
-            event.preventDefault();
-            Client.set_snake_direction(90);
-        }
-        if ( event.which == DOWN ) {
-            event.preventDefault();
-            Client.set_snake_direction(180);
-        }
+
+
     });
 
     Client.render(function(cmd, data) {
@@ -43,46 +61,15 @@ $(function(){
 
     //we are ready
     Client.ready(function(connection, opp){
-        //do some rendering stuff here
+
+        //hide all the links
+        ConnGUI.hide();
+
+        //log the opponent
         console.log(opp);
+
+        GameReady = true;
     });
 
-    //OK, we want our names.
-    Client.start(prompt("Enter your name: "));
-
-    whatToDo = function(){
-        Client.list(function(lbys){
-            var text = lbys.join("\n");
-
-            text = "The following player(s) do not currently have partners: \n\n\n"
-            + text
-            + "\nDo you want to join one game? Click OK to join a game or CANCEL to create a new one. ";
-
-            //Do we want to join or create a new one.
-            if(!confirm(text)){
-
-                alert("Will now accept requests. "); 
-
-                Client.host(function(who, respond){
-                    var q = confirm("'" + who + "' wants to play with you? \nAccept the request?")
-                    respond(q);
-                });
-            } else {
-                //Who we want to join
-                var who = prompt("Enter the name of the person you want to join. ");
-
-                Client.joinLobby(who, function(answer){
-                    if(!answer){
-                        alert("Unable to join the specefied game. ");
-                        whatToDo();
-                    }
-                });
-            }
-
-        });
-    };
-
-
-    window.start = whatToDo;
-
+    ConnGUI.init();
 });
