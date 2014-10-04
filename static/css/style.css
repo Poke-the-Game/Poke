@@ -46,3 +46,23 @@ h1 {
 	width:30px;
 	height:50px;
 }
+
+.ball, .snake_head, .snake_body {
+	position: absolute;
+	width:10px;
+	height:10px;
+}
+
+.ball {
+	border-radius: 50%;
+	background-color: #fff;
+}
+
+.snake_head {
+	border-radius: 25%;
+	background-color: #0f0;
+}
+
+.snake_body {
+	background-color: #0f0;
+}
