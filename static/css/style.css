@@ -94,3 +94,7 @@ input {
 input[type=text], span.selected{
 	color: white;
 }
+
+h1 {
+	color: white; 
+}
