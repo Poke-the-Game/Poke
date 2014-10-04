@@ -33,3 +33,13 @@ h1 {
 	height:100%;
 	border-left:1px dashed #fff;
 }
+
+.score {
+	position: absolute;
+	top:20px;
+}
+
+.score .digit {
+	width:30px;
+	height:50px;
+}
