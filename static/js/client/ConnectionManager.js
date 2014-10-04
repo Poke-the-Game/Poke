@@ -39,3 +39,8 @@ ConnectionManager.prototype.start = function(name){
     //Send Client Event to server
     this.socket.emit("client_begin", name);
 }
+
+ConnectionManager.prototype.set_snake_direction = function(deg) {
+	console.log(deg)
+	this.socket.emit("snake_direction", deg);
+} 
