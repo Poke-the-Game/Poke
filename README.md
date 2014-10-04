@@ -19,7 +19,7 @@ npm install .
 node index.js
 ```
 
-Then navigate your browsers to [http://localhost:3000](http://localhost:3000).
+Then navigate your Chrome Browser to [http://localhost:3000](http://localhost:3000).
 
 ## How to play
 
