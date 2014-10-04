@@ -75,7 +75,7 @@ h1 {
     top: 0;
     background-color: black;
     z-index: 1000;
-	color: white;
+	color: gray;
 	text-align: center;
 }
 
@@ -86,11 +86,11 @@ input {
 	width: 80%;
 	border: none;
 	background-color: black;
-	color: white;
+	color: gray;
 	outline: none;
 	text-align: center;
 }
 
 input[type=text], span.selected{
-	color: gray;
+	color: white;
 }
