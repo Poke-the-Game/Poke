@@ -81,8 +81,13 @@ $(function(){
 
     });
 
-    Client.update_score(function(score) {
 
+    Client.update_score(function(data) {
+        $score = $('#'+data.pos+'_score').html('');
+        var score = data.score.toString()
+        for(var i in score) {
+            $score.append($('<img src="img/digits/'+score[i]+'.png" class="digit">'))
+        } 
     });
 
     //we are ready
