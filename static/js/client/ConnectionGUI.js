@@ -71,9 +71,14 @@ ConnectionGUI.prototype.prompt = function(q, next){
 }
 
 ConnectionGUI.prototype.alert = function(msg, next){
-    this.select(msg, ["OK"], function(){
+
+    var me = this;
+
+    me.select(msg, (typeof next === "function")?["OK"]:[""], function(){
         if(typeof next === "function"){
-            next(); 
+            next();
+        } else {
+            me.alert(msg, next);
         }
     })
 }
@@ -274,6 +279,9 @@ ConnectionGUI.prototype.auto = function(lbys){
 ConnectionGUI.prototype.disconnect = function(){
     var me = this;
 
-    me.alert("You have disconnected. ", true);
+    me.select("You have disconnected. ", ["Reconnect"], function(){
+        window.location.reload();
+    });
+    
     me.the_client.disconnect();
 }

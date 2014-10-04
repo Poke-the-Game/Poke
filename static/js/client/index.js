@@ -8,24 +8,29 @@ $(function(){
 
     $( "body" ).keydown(function( event ) {
         var LEFT = 37;
+        var A = 65;
+
         var UP = 38;
+        var W = 87;
         var RIGHT = 39;
+        var D = 68;
         var DOWN = 40;
+        var S = 83;
 
         if(GameReady){
-            if ( event.which == LEFT ) {
+            if ( event.which == LEFT  || event.which  == A) {
                 event.preventDefault();
                 Client.set_snake_direction(270);
             }
-            if ( event.which == UP ) {
+            if ( event.which == UP || event.which == W ) {
                 event.preventDefault();
                 Client.set_snake_direction(0);
             }
-            if ( event.which == RIGHT ) {
+            if ( event.which == RIGHT || event.which == D) {
                 event.preventDefault();
                 Client.set_snake_direction(90);
             }
-            if ( event.which == DOWN ) {
+            if ( event.which == DOWN || event.which == S ) {
                 event.preventDefault();
                 Client.set_snake_direction(180);
             }
@@ -35,8 +40,16 @@ $(function(){
                 ConnGUI.moveUp();
             }
 
+            if(event.which == W){
+                ConnGUI.moveUp();
+            }
+
             if ( event.which == DOWN ) {
                 event.preventDefault();
+                ConnGUI.moveDown();
+            }
+
+            if(event.which == S){
                 ConnGUI.moveDown();
             }
         }
