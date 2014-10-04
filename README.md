@@ -1,0 +1,14 @@
+# Poke The Game
+
+Ping + Snake = Poke
+
+## Install
+
+```
+npm install .
+node index.js
+```
+
+## License
+
+MIT, see LICENSE file.

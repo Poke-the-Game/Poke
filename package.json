@@ -1,0 +1,24 @@
+{
+  "name": "Poke",
+  "version": "0.0.1",
+  "description": ".",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.9.5",
+    "socket.io": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Poke-the-Game"
+  },
+  "keywords": [
+    "Snake",
+    "Pong",
+    "Poke"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "author": "The Poke-The-Game Team <https://github.com/Poke-the-Game",
+  "license": "MIT"
+}
