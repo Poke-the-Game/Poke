@@ -37,6 +37,10 @@ ConnectionManager.prototype.render = function(handler) {
     this.socket.on("remove_gobj", function(data){
         handler.call(this, "remove_gobj", data);
     });
+
+    this.socket.on("blink_type", function(data){
+        handler.call(this, "blink_type", data);
+    });
 }
 
 ConnectionManager.prototype.update_score = function(handler) {

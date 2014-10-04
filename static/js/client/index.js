@@ -67,18 +67,24 @@ $(function(){
     });
 
     Client.render(function(cmd, data) {
-        if(cmd=="add_gobj") {
+        if(cmd == "add_gobj") {
             $('<div class="'+data.type+'" id="'+data.id+'">')
                 .css({left: data.x, top: data.y, zIndex:data.z})
-                .appendTo($("#field"))//TODO store field somewhere
+                .appendTo($("#field")); //TODO store field somewhere
         }
 
-        if(cmd=="move_gobj") {
-            $('#'+data.id).css({left: data.x, top: data.y})
+        if(cmd == "move_gobj") {
+            $('#'+data.id).css({left: data.x, top: data.y});
         }
 
-        //TODO remove object
+        if(cmd == "remove_gobj") {
+            $('#'+data.id).remove();
+        }
 
+
+        if(cmd == "blink_type") {
+            $('.' + data.split(' ').join('.')).addClass('blink');
+        }
     });
 
 
