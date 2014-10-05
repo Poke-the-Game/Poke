@@ -120,7 +120,7 @@ $(function(){
     }
 
     //we are ready
-    Client.ready(function(connection, delay, side, name, opponent){
+    Client.ready(function(connection, delay, side, name, opponent, game_type){
 
         //hide all the links
         ConnGUI.hide();

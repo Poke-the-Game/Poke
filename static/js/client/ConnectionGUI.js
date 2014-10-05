@@ -16,8 +16,6 @@ ConnectionGUI.prototype.moveDown = function(){
 
 ConnectionGUI.prototype.doTab = function(rev){
 
-    console.log(rev);
-
     var as = $("#menu").find("a");
 
     var index = (function(){
@@ -279,6 +277,9 @@ ConnectionGUI.prototype.begin_query = function(){
     );
 }
 
+var GameTypes = ["Normal"];
+var GameTypeNames = ["normal"];
+
 ConnectionGUI.prototype.create_new = function(auto_accept){
 
     var me = this;
@@ -289,31 +290,40 @@ ConnectionGUI.prototype.create_new = function(auto_accept){
         });
     }
 
-    showWaitingPrompt();
 
-    me.the_client.host(function(who, respond){
-        if(auto_accept){
-            //Automatically accept
-            return respond(true);
-        }
+    me.select("Select Game Type: ", ["Normal", "Hardcore"], function(index, type){
+        var type = GameTypeNames[index];
 
-        me.select(who + " wants to play with you. ", ["Accept", "Deny"], function(index){
-            respond(index == 0);
-            if(index == 1){
-                showWaitingPrompt();
+        showWaitingPrompt();
+
+        me.the_client.host(function(who, respond){
+            if(auto_accept){
+                //Automatically accept
+                return respond(true);
             }
-        });
+
+            me.select(who + " wants to play with you. ", ["Accept", "Deny"], function(index){
+                respond(index == 0);
+                if(index == 1){
+                    showWaitingPrompt();
+                }
+            });
+        }, type);
     });
 }
 
 ConnectionGUI.prototype.join = function(lbys){
     var me = this;
 
-    lbys.push("CANCEL");
+    var elems = lbys.map(function(element){
+        return element[0]+ " ("+element[1]+")";
+    });
 
-    me.select("Which player do you want to play with?", lbys, function(index, element){
-        if(index !== lbys.length - 1){
-            me.do_join(element);
+    elems.push("CANCEL");
+
+    me.select("Which player do you want to play with?", elems, function(index){
+        if(index !== elems.length - 1){
+            me.do_join(lbys[index][0]);
         } else {
             me.begin_query();
         }
@@ -340,7 +350,7 @@ ConnectionGUI.prototype.auto = function(lbys){
     if(lbys.length == 0){
         this.create_new(true);
     } else {
-        this.do_join(lbys[0]);
+        this.do_join(lbys[0][0]);
     }
 }
 

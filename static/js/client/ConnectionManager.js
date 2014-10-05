@@ -18,7 +18,7 @@ ConnectionManager.prototype.ready = function(handler, on_end){
         //Call the opponent
         console.log(data);
 
-        handler.call(this, self.socket, data.delay, data.side, data.name, data.opponent);
+        handler.call(this, self.socket, data.delay, data.side, data.name, data.opponent, data.game_type);
     });
 
     //disconnect handler
@@ -65,7 +65,7 @@ ConnectionManager.prototype.start = function(name){
     this.socket.emit("lobby_begin", name);
 }
 
-ConnectionManager.prototype.host = function(on_request){
+ConnectionManager.prototype.host = function(on_request, game_type){
     //on_request = function(form, respond){respond(true); }
 
     var self = this;
@@ -79,7 +79,7 @@ ConnectionManager.prototype.host = function(on_request){
     })
 
     //We are creating a new lobby
-    this.socket.emit("lobby_new");
+    this.socket.emit("lobby_new", game_type);
 }
 
 
