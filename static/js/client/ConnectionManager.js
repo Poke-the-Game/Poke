@@ -43,6 +43,10 @@ ConnectionManager.prototype.render = function(handler) {
     this.socket.on("blink_type", function(data){
         handler.call(this, "blink_type", data);
     });
+
+    this.socket.on("flip_screen", function(data){
+        handler.call(this, "flip_screen", data);
+    });
 }
 
 ConnectionManager.prototype.update_score = function(handler) {

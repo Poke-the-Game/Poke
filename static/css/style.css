@@ -26,6 +26,15 @@ h1 {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
+
+	transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    transition: all 1.0s linear;
+    backface-visibility: visible;
+}
+
+#field.flipped {
+	transform: rotateY(180deg);
 }
 
 .center_line {
@@ -83,6 +92,18 @@ h1 {
 .powerup.grow_snake {
 	background-color:transparent;
 	background-image: url("/img/powerups/grow_snake.png");
+}
+.powerup.shrink_snake {
+	background-color:transparent;
+	background-image: url("/img/powerups/shrink_snake.png");
+}
+.powerup.freeze_snake {
+	background-color:transparent;
+	background-image: url("/img/powerups/freeze_snake.png");
+}
+.powerup.flip_screen {
+	background-color:transparent;
+	background-image: url("/img/powerups/flip_screen.png");
 }
 
 

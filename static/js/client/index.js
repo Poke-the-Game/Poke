@@ -85,6 +85,11 @@ $(function(){
         if(cmd == "blink_type") {
             $('.' + data.split(' ').join('.')).addClass('blink');
         }
+
+        if(cmd == "flip_screen") {
+            $('#field').addClass('flipped');
+            window.setTimeout(function() {$('#field').removeClass('flipped');}, data.duration)
+        }
     });
 
 
