@@ -66,6 +66,9 @@ $(function(){
 
     });
 
+    var beer_timeout = -1;
+    var flip_screen_timeout = -1;
+
     Client.render(function(cmd, data) {
         if(cmd == "add_gobj") {
             $('<div class="'+data.type+'" id="'+data.id+'">')
@@ -96,12 +99,14 @@ $(function(){
 
         if(cmd == "flip_screen") {
             $('#field').addClass('flipped');
-            window.setTimeout(function() {$('#field').removeClass('flipped');}, data.duration)
+            window.clearTimeout(beer_timeout);
+            beer_timeout = window.setTimeout(function() {$('#field').removeClass('flipped');}, data.duration)
         }
 
         if(cmd == "beer") {
             $('#field').addClass('drunken');
-            window.setTimeout(function() {$('#field').removeClass('drunken');}, data.duration)
+            window.clearTimeout(flip_screen_timeout);
+            flip_screen_timeout = window.setTimeout(function() {$('#field').removeClass('drunken');}, data.duration)
         }
     });
 
