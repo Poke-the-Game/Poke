@@ -30,9 +30,10 @@ process.on('uncaughtException', function(err) {
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '/static'));
-http.listen(3000, function(){
-  winston.info('listening on *:3000');
+http.listen(port, function(){
+  winston.info('listening on *:'+port.toString());
 });
 
 //Start a connection manager
