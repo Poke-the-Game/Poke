@@ -127,6 +127,10 @@ h1 {
 	background-color:transparent;
 	background-image: url("/img/powerups/freeze_snake.png");
 }
+.powerup.ghostify_snake {
+	background-color:transparent;
+	background-image: url("/img/powerups/ghostify_snake.png");
+}
 .powerup.flip_screen {
 	background-color:transparent;
 	background-image: url("/img/powerups/flip_screen.png");
