@@ -25,7 +25,10 @@ h1 {
 	margin-left: -320px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #0f0;
+	border-right: 1px solid #00f;
 
 	transform: rotateY(0deg) rotateZ(0deg);
     transform-style: preserve-3d;
@@ -99,7 +102,7 @@ h1 {
 }
 
 .snake.head {
-	border-radius: 25%;
+	border-radius: 33%;
 }
 
 .snake.body {
