@@ -33,7 +33,7 @@ h1 {
     backface-visibility: visible;
 }
 
-.flipped_effect {
+#field.flipped_effect {
 	transform: rotateY(180deg);
 }
 
