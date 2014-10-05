@@ -111,9 +111,9 @@ $(function(){
         }
 
         if(cmd == "mushroom") {
-            $('#field').addClass('mushroom');
+            $('.snake.'+data.side).addClass('mushroom');
             window.clearTimeout(mushroom_timeout);
-            mushroom_timeout = window.setTimeout(function() {$('#field').removeClass('mushroom');}, data.duration)
+            mushroom_timeout = window.setTimeout(function() {$('.snake.'+data.side).removeClass('mushroom');}, data.duration)
         }
     });
 

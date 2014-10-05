@@ -65,6 +65,10 @@ ConnectionManager.prototype.render = function(handler) {
     this.socket.on("beer", function(data){
         handler.call(this, "beer", data);
     });
+
+    this.socket.on("mushroom", function(data){
+        handler.call(this, "mushroom", data);
+    });
 }
 
 ConnectionManager.prototype.update_score = function(handler) {
