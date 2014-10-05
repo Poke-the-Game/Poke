@@ -90,6 +90,11 @@ $(function(){
             $('#field').addClass('flipped');
             window.setTimeout(function() {$('#field').removeClass('flipped');}, data.duration)
         }
+
+        if(cmd == "beer") {
+            $('#field').addClass('drunken');
+            window.setTimeout(function() {$('#field').removeClass('drunken');}, data.duration)
+        }
     });
 
 

@@ -27,7 +27,7 @@ h1 {
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
 
-	transform: rotateY(0deg);
+	transform: rotateY(0deg) rotateZ(0deg);
     transform-style: preserve-3d;
     transition: all 1.0s linear;
     backface-visibility: visible;
@@ -35,6 +35,25 @@ h1 {
 
 #field.flipped {
 	transform: rotateY(180deg);
+}
+
+#field.drunken {
+	-webkit-animation: drunken 5s steps(50, start) infinite;
+}
+
+
+@-webkit-keyframes drunken {
+    0%  { transform: rotateZ(0deg)}
+    
+    10% { transform: rotateZ(-7deg)}
+    40% { transform: rotateZ(-20deg)}
+    
+    50% { transform: rotateZ(0deg)}
+    
+    60% { transform: rotateZ(7deg)}
+    90% { transform: rotateZ(20deg)}
+    
+    100% { transform: rotateZ(0deg)}
 }
 
 .center_line {
@@ -104,6 +123,10 @@ h1 {
 .powerup.flip_screen {
 	background-color:transparent;
 	background-image: url("/img/powerups/flip_screen.png");
+}
+.powerup.beer {
+	background-color:transparent;
+	background-image: url("/img/powerups/beer.png");
 }
 
 

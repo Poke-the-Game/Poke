@@ -47,6 +47,10 @@ ConnectionManager.prototype.render = function(handler) {
     this.socket.on("flip_screen", function(data){
         handler.call(this, "flip_screen", data);
     });
+
+    this.socket.on("beer", function(data){
+        handler.call(this, "beer", data);
+    });
 }
 
 ConnectionManager.prototype.update_score = function(handler) {
