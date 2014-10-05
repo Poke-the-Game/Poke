@@ -40,6 +40,21 @@
 * y, float
 * on_touch(Player, Game) {player.connection.emit("foo", ..)}
 
+### Ideas for Powerups
+* increase / decrease snake length
+* increase / decrease balls velocity
+* more balls
+* change theme
+* freeze opponent / get frozen
+* add "lifes"
+* sweets -> influence gravity
+* invert snake direction (of opponent)
+* mushroom -> weird visual effects
+* alcohol -> some other weird stuff
+* second snake
+* ghost mode
+* mirror screne
+
 ## Client-Server Communication
 
 ### Client -> Server
