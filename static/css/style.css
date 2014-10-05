@@ -25,10 +25,7 @@ h1 {
 	margin-left: -320px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	border-left: 1px solid #0f0;
-	border-right: 1px solid #00f;
+	border: 1px solid #ccc;
 
 	transform: rotateY(0deg) rotateZ(0deg);
     transform-style: preserve-3d;
@@ -42,6 +39,13 @@ h1 {
 
 #field.drunken {
 	-webkit-animation: drunken 5s steps(50, start) infinite;
+}
+
+.goal_line {
+	position: absolute;
+	width:2px;
+	height:400px;
+	top:40px;
 }
 
 
