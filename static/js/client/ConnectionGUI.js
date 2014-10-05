@@ -277,8 +277,8 @@ ConnectionGUI.prototype.begin_query = function(){
     );
 }
 
-var GameTypes = ["Normal"];
-var GameTypeNames = ["normal"];
+var GameTypes = ["Normal", "Hardcore", "Classic", "Power Ups Everywhere"];
+var GameTypeNames = ["normal", "hardcore", "classic", "power"];
 
 ConnectionGUI.prototype.create_new = function(auto_accept){
 
@@ -291,7 +291,7 @@ ConnectionGUI.prototype.create_new = function(auto_accept){
     }
 
 
-    me.select("Select Game Type: ", ["Normal", "Hardcore"], function(index, type){
+    me.select("Select Game Type: ", GameTypes, function(index, type){
         var type = GameTypeNames[index];
 
         showWaitingPrompt();

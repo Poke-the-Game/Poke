@@ -15,9 +15,7 @@ ConnectionManager.prototype.ready = function(handler, on_end){
 
     //we are ready.
     this.socket.on("ready", function(data){
-        //Call the opponent
-        console.log(data);
-
+        //ready to start
         handler.call(this, self.socket, data.delay, data.side, data.name, data.opponent, data.game_type);
     });
 
