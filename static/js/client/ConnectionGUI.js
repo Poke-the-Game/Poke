@@ -315,7 +315,7 @@ ConnectionGUI.prototype.create_new = function(auto_accept, type){
         me.select("Select Game Type: ", GameTypes, function(index, type){
 
             if(index == GameTypes.length - 1){
-                me.begin_query(); 
+                me.begin_query();
                 return;
             }
             var type = GameTypeNames[index];
@@ -366,12 +366,18 @@ ConnectionGUI.prototype.auto = function(lbys){
     }
 }
 
-ConnectionGUI.prototype.disconnect = function(){
+ConnectionGUI.prototype.disconnect = function(msg){
     var me = this;
 
     me.select("Disconnected. ", ["Reconnect"], function(){
         window.location.reload();
     });
+
+    if(typeof msg == "string"){
+        $("<div class='box'>").html(msg).insertAfter(
+            $("#menu").find("h2")
+        );
+    }
 
     me.the_client.disconnect();
 }

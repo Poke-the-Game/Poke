@@ -148,8 +148,8 @@ $(function(){
         $(".name_left").fadeOut(delay);
 
         GameReady = true;
-    }, function(){
-        ConnGUI.disconnect();
+    }, function(msg){
+        ConnGUI.disconnect(msg);
     });
 
     ConnGUI.init();
