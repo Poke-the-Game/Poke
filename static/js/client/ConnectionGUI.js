@@ -278,9 +278,10 @@ ConnectionGUI.prototype.begin_query = function(){
 }
 
 var GameTypes = ["Normal", "Hardcore", "Classic", "Power Ups Everywhere"];
+GameTypes.push("CANCEL");
 var GameTypeNames = ["normal", "hardcore", "classic", "power"];
 
-ConnectionGUI.prototype.create_new = function(auto_accept){
+ConnectionGUI.prototype.create_new = function(auto_accept, type){
 
     var me = this;
 
@@ -290,10 +291,7 @@ ConnectionGUI.prototype.create_new = function(auto_accept){
         });
     }
 
-
-    me.select("Select Game Type: ", GameTypes, function(index, type){
-        var type = GameTypeNames[index];
-
+    var runType = function(type){
         showWaitingPrompt();
 
         me.the_client.host(function(who, respond){
@@ -309,7 +307,21 @@ ConnectionGUI.prototype.create_new = function(auto_accept){
                 }
             });
         }, type);
-    });
+    }
+
+    if(type){
+        runType(type);
+    } else {
+        me.select("Select Game Type: ", GameTypes, function(index, type){
+
+            if(index == GameTypes.length - 1){
+                me.begin_query(); 
+                return;
+            }
+            var type = GameTypeNames[index];
+            runType(type);
+        });
+    }
 }
 
 ConnectionGUI.prototype.join = function(lbys){
@@ -348,7 +360,7 @@ ConnectionGUI.prototype.do_join = function(who){
 
 ConnectionGUI.prototype.auto = function(lbys){
     if(lbys.length == 0){
-        this.create_new(true);
+        this.create_new(true, GameTypes[0]);
     } else {
         this.do_join(lbys[0][0]);
     }
