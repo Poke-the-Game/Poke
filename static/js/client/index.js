@@ -82,6 +82,14 @@ $(function(){
         }
 
 
+        if(cmd == "ghostify_snake") {
+            $('.snake.body.'+data.side).css('opacity', 0.25);
+        }
+
+        if(cmd == "unghostify_snake") {
+            $('.snake.body.'+data.side).css('opacity', 1.0);
+        }
+
         if(cmd == "blink_type") {
             $('.' + data.split(' ').join('.')).addClass('blink');
         }

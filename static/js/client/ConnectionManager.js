@@ -38,6 +38,14 @@ ConnectionManager.prototype.render = function(handler) {
         handler.call(this, "remove_gobj", data);
     });
 
+    this.socket.on("ghostify_snake", function(data){
+        handler.call(this, "ghostify_snake", data);
+    });
+
+    this.socket.on("unghostify_snake", function(data){
+        handler.call(this, "unghostify_snake", data);
+    });
+
     this.socket.on("blink_type", function(data){
         handler.call(this, "blink_type", data);
     });
