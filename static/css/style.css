@@ -102,7 +102,7 @@ h1 {
 }
 
 .snake.head {
-	border-radius: 33%;
+	opacity: 0.75;
 }
 
 .snake.body {
