@@ -66,8 +66,12 @@ ConnectionManager.prototype.render = function(handler) {
         handler.call(this, "beer", data);
     });
 
-    this.socket.on("mushroom", function(data){
-        handler.call(this, "mushroom", data);
+    this.socket.on("mushroom_snake", function(data){
+        handler.call(this, "mushroom_snake", data);
+    });
+
+    this.socket.on("mushroom_field", function(data){
+        handler.call(this, "mushroom_field", data);
     });
 }
 

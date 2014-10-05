@@ -99,21 +99,27 @@ $(function(){
         }
 
         if(cmd == "flip_screen") {
-            $('#field').addClass('flipped');
+            $('#field').addClass('flipped_effect');
             window.clearTimeout(flip_screen_timeout);
-            flip_screen_timeout = window.setTimeout(function() {$('#field').removeClass('flipped');}, data.duration)
+            flip_screen_timeout = window.setTimeout(function() {$('#field').removeClass('flipped_effect');}, data.duration)
         }
 
         if(cmd == "beer") {
-            $('#field').addClass('drunken');
+            $('#field').addClass('drunken_effect');
             window.clearTimeout(beer_timeout);
-            beer_timeout = window.setTimeout(function() {$('#field').removeClass('drunken');}, data.duration)
+            beer_timeout = window.setTimeout(function() {$('#field').removeClass('drunken_effect');}, data.duration)
         }
 
-        if(cmd == "mushroom") {
-            $('.snake.'+data.side).addClass('mushroom');
+        if(cmd == "mushroom_field") {
+            $('#field').addClass('mushroom_effect');
             window.clearTimeout(mushroom_timeout);
-            mushroom_timeout = window.setTimeout(function() {$('.snake.'+data.side).removeClass('mushroom');}, data.duration)
+            mushroom_timeout = window.setTimeout(function() {$('#field').removeClass('mushroom_effect');}, data.duration)
+        }
+
+        if(cmd == "mushroom_snake") {
+            $('.snake.'+data.side).addClass('mushroom_effect');
+            window.clearTimeout(mushroom_timeout);
+            mushroom_timeout = window.setTimeout(function() {$('.snake.'+data.side).removeClass('mushroom_effect');}, data.duration)
         }
     });
 

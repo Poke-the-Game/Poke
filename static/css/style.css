@@ -33,11 +33,11 @@ h1 {
     backface-visibility: visible;
 }
 
-#field.flipped {
+.flipped_effect {
 	transform: rotateY(180deg);
 }
 
-#field.drunken {
+.drunken_effect {
 	-webkit-animation: drunken 5s steps(50, start) infinite;
 }
 
@@ -110,7 +110,7 @@ h1 {
 .snake.body {
 }
 
-.snake.mushroom {
+.mushroom_effect {
 	-webkit-animation: mushroom 1s steps(100, start) infinite;
 }
 
