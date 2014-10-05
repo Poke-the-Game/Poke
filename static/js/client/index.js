@@ -68,6 +68,7 @@ $(function(){
 
     var beer_timeout = -1;
     var flip_screen_timeout = -1;
+    var mushroom_timeout = -1;
 
     Client.render(function(cmd, data) {
         if(cmd == "add_gobj") {
@@ -99,14 +100,20 @@ $(function(){
 
         if(cmd == "flip_screen") {
             $('#field').addClass('flipped');
-            window.clearTimeout(beer_timeout);
-            beer_timeout = window.setTimeout(function() {$('#field').removeClass('flipped');}, data.duration)
+            window.clearTimeout(flip_screen_timeout);
+            flip_screen_timeout = window.setTimeout(function() {$('#field').removeClass('flipped');}, data.duration)
         }
 
         if(cmd == "beer") {
             $('#field').addClass('drunken');
-            window.clearTimeout(flip_screen_timeout);
-            flip_screen_timeout = window.setTimeout(function() {$('#field').removeClass('drunken');}, data.duration)
+            window.clearTimeout(beer_timeout);
+            beer_timeout = window.setTimeout(function() {$('#field').removeClass('drunken');}, data.duration)
+        }
+
+        if(cmd == "mushroom") {
+            $('#field').addClass('mushroom');
+            window.clearTimeout(mushroom_timeout);
+            mushroom_timeout = window.setTimeout(function() {$('#field').removeClass('mushroom');}, data.duration)
         }
     });
 

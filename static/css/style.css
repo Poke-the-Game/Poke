@@ -41,14 +41,6 @@ h1 {
 	-webkit-animation: drunken 5s steps(50, start) infinite;
 }
 
-.goal_line {
-	position: absolute;
-	width:2px;
-	height:320px;
-	top:80px;
-}
-
-
 @-webkit-keyframes drunken {
     0%  { transform: rotateZ(0deg)}
     
@@ -63,6 +55,12 @@ h1 {
     100% { transform: rotateZ(0deg)}
 }
 
+.goal_line {
+	position: absolute;
+	width:2px;
+	height:320px;
+	top:80px;
+}
 .center_line {
 	position: absolute;
 	top:0px;
@@ -110,6 +108,24 @@ h1 {
 }
 
 .snake.body {
+}
+
+.snake.mushroom {
+	-webkit-animation: mushroom 1s steps(100, start) infinite;
+}
+
+@-webkit-keyframes mushroom {
+	0% {background-color: #ff0000;}
+	10% {background-color: #ff8000;}
+	20% {background-color: #ffff00;}
+	30% {background-color: #80ff00;}
+	40% {background-color: #00ff00;}
+	50% {background-color: #00ff80;}
+	60% {background-color: #00ffff;}
+	70% {background-color: #0080ff;}
+	80% {background-color: #0000ff;}
+	90% {background-color: #8000ff;}
+	100% {background-color: #ff0080;}
 }
 
 .powerup {
