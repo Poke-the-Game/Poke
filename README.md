@@ -27,7 +27,7 @@ Move your SNAKE to protect your goal and collect the POWERUPS.
 
 Score a GOAL to gain points.
 
-Use UP, RIGHT, DOWN, LEFT or W, A, S, D to control your snake or navigate the menu.
+Use UP, RIGHT, DOWN, LEFT or W, A, S, D to control your snake or navigate the menu. 
 
 Press ENTER to navigate menus.
 
@@ -68,4 +68,3 @@ THE SOFTWARE.
 * [node-uuid](https://github.com/broofa/node-uuid) 1.4.1, licensed under [MIT License](https://github.com/broofa/node-uuid/blob/master/LICENSE.md)
 * [Socket.IO](http://socket.io/) 1.1.0, licensed under [MIT License](https://github.com/Automattic/socket.io/blob/master/LICENSE)
 * [winston](https://github.com/flatiron/winston) 0.8.0, licensed under [MIT License](https://github.com/flatiron/winston/blob/master/LICENSE)
-* [CLIPPY.JS](https://www.smore.com/clippy-js), licensed under [MIT License](https://github.com/smore-inc/clippy.js/blob/master/MIT-LICENSE.txt)
