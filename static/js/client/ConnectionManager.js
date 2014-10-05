@@ -19,8 +19,16 @@ ConnectionManager.prototype.ready = function(handler, on_end){
         handler.call(this, self.socket, data.delay, data.side, data.name, data.opponent, data.game_type);
     });
 
+    var end_msg = undefined;
+
+    this.socket.once("end_game", function(m){
+        end_msg = m;
+    });
+
     //disconnect handler
-    this.socket.on("disconnect", on_end);
+    this.socket.on("disconnect", function(){
+        on_end(end_msg);
+    });
 }
 
 ConnectionManager.prototype.render = function(handler) {
