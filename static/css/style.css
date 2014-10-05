@@ -241,8 +241,18 @@ div.name_left, div.name_right {
 }
 div.name_left {
 	right:340px;
+
+	width: 300px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 div.name_right {
 	left:340px;
+
+	width: 300px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
