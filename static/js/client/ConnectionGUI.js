@@ -369,7 +369,7 @@ ConnectionGUI.prototype.auto = function(lbys){
 ConnectionGUI.prototype.disconnect = function(msg){
     var me = this;
 
-    me.select("Disconnected. ", ["Reconnect"], function(){
+    me.select("The game ended. ", ["Reconnect"], function(){
         window.location.reload();
     });
 
