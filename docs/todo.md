@@ -9,3 +9,5 @@ This is a list of (possibly) upcoming features. Tell us, if you have more ideas!
 * allow multiple powerups at the same time
 * some documentation
 * less ```for i in an_array```s
+* public leaderboards
+* permanent accounts (with statistics, etc)
