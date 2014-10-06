@@ -15,3 +15,4 @@ This is a list of (possibly) upcoming features. Tell us, if you have more ideas!
 - [ ] send game invites over aforementioned networks and mail, etc
 - [ ] show active powerups next to field (behind goalline?)
 - [ ] add achievements and ranks
+- [ ] singleplayer training (or simply snake?) during "waiting for reqeusts"
