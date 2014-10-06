@@ -11,3 +11,5 @@ This is a list of (possibly) upcoming features. Tell us, if you have more ideas!
 * less ```for i in an_array```s
 * public leaderboards
 * permanent accounts (with statistics, etc)
+  * accounts via google, facebook, twitter, etc
+* send game invites over aforementioned networks and mail, etc
