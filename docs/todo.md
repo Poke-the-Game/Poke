@@ -7,3 +7,5 @@ This is a list of (possibly) upcoming features. Tell us, if you have more ideas!
 * fix several collision-detection related bugs
 * fix bugs occuring when multiple powerups are used at the same time
 * allow multiple powerups at the same time
+* some documentation
+* less ```for i in an_array```s
