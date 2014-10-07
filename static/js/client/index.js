@@ -1,6 +1,14 @@
 
 $(function(){
     //create a client
+    var GameState = {
+    	snake_direction: -1,
+    	effect_timeouts: {
+    		beer: -1,
+    		flip_screen: -1,
+    		mushroom: -1
+    	}
+    }
     var Client = new ConnectionManager();
     var ConnGUI = new ConnectionGUI(Client);
 
@@ -22,21 +30,24 @@ $(function(){
         var TAB = 9;
 
         if(GameReady){
+        	var _dir = GameState.snake_direction;
             if ( event.which == LEFT  || event.which  == A) {
-                event.preventDefault();
-                Client.set_snake_direction(270);
+                _dir = 270;                
             }
             if ( event.which == UP || event.which == W ) {
-                event.preventDefault();
-                Client.set_snake_direction(0);
+                _dir = 0;
             }
             if ( event.which == RIGHT || event.which == D) {
-                event.preventDefault();
-                Client.set_snake_direction(90);
+                _dir = 90;
             }
             if ( event.which == DOWN || event.which == S ) {
-                event.preventDefault();
-                Client.set_snake_direction(180);
+                _dir = 180;
+            }
+
+            if(_dir != GameState.snake_direction) {
+            	event.preventDefault();
+            	GameState.snake_direction = _dir;
+            	Client.set_snake_direction(_dir);
             }
         } else {
             if ( event.which == UP ) {
@@ -66,9 +77,6 @@ $(function(){
 
     });
 
-    var beer_timeout = -1;
-    var flip_screen_timeout = -1;
-    var mushroom_timeout = -1;
 
     Client.render(function(cmd, data) {
         if(cmd == "add_gobj") {
@@ -100,26 +108,26 @@ $(function(){
 
         if(cmd == "flip_screen") {
             $('#field').addClass('flipped_effect');
-            window.clearTimeout(flip_screen_timeout);
-            flip_screen_timeout = window.setTimeout(function() {$('#field').removeClass('flipped_effect');}, data.duration)
+            window.clearTimeout(GameState.effect_timeouts.flip_screen);
+            GameState.effect_timeouts.flip_screen = window.setTimeout(function() {$('#field').removeClass('flipped_effect');}, data.duration)
         }
 
         if(cmd == "beer") {
             $('#field').addClass('drunken_effect');
-            window.clearTimeout(beer_timeout);
-            beer_timeout = window.setTimeout(function() {$('#field').removeClass('drunken_effect');}, data.duration)
+            window.clearTimeout(GameState.effect_timeouts.beer);
+            GameState.effect_timeouts.beer = window.setTimeout(function() {$('#field').removeClass('drunken_effect');}, data.duration)
         }
 
         if(cmd == "mushroom_field") {
             $('#field').addClass('mushroom_effect');
-            window.clearTimeout(mushroom_timeout);
-            mushroom_timeout = window.setTimeout(function() {$('#field').removeClass('mushroom_effect');}, data.duration)
+            window.clearTimeout(GameState.effect_timeouts.mushroom_field);
+            GameState.effect_timeouts.mushroom_field = window.setTimeout(function() {$('#field').removeClass('mushroom_effect');}, data.duration)
         }
 
         if(cmd == "mushroom_snake") {
             $('.snake.'+data.side).addClass('mushroom_effect');
-            window.clearTimeout(mushroom_timeout);
-            mushroom_timeout = window.setTimeout(function() {$('.snake.'+data.side).removeClass('mushroom_effect');}, data.duration)
+            window.clearTimeout(GameState.effect_timeouts.mushroom_snake);
+            GameState.effect_timeouts.mushroom_snake = window.setTimeout(function() {$('.snake.'+data.side).removeClass('mushroom_effect');}, data.duration)
         }
     });
 
