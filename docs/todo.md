@@ -17,3 +17,5 @@ This is a list of (possibly) upcoming features. Tell us, if you have more ideas!
 - [ ] add achievements and ranks
 - [ ] singleplayer training (or simply snake?) during "waiting for reqeusts"
 - [ ] for all effects make the timeout server side (like ghostify and unghostify)
+- [ ] mobile app (@dmitryfd offered some help for this)
+- [ ] rewrite of the menu as a seperate module with documentation (in progress)
