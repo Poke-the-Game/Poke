@@ -3,29 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Poke-the-Game</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-
-    <!-- Font -->
-    <link href='font/PressStart2P.css' rel='stylesheet' type='text/css'>
-
-    <!-- Styles -->
-    <link href="css/style.css" type="text/css" rel="stylesheet">
 
     <!-- A nice icon -->
     <link rel='shortcut icon' href='/favicon.ico'>
 
-    <!-- Socket IO -->
+    <!-- Dependencies: Socket.iO + jQuery -->
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
-    <!-- jQuery -->
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-
     <!-- Client Scripts -->
-    <script src="/js/client/ConnectionGUI.js"></script>
-    <script src="/js/client/ConnectionManager.js"></script>
-    <script src="/js/client/index.js"></script>
+    <script src="/lib/poke-client/js/ConnectionGUI.js"></script>
+    <script src="/lib/poke-client/js/ConnectionManager.js"></script>
+    <script src="/lib/poke-client/js/index.js"></script>
+
+    <!-- Styling -->
+    <link href='/lib/press-start-2p/PressStart2P.css' rel='stylesheet' type='text/css'>
+    <link href="/lib/poke-client/css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <h1>POKE THE GAME</h1>
@@ -49,7 +42,7 @@
         <div class="goal_line" style="right:1px; background-color:#00f;"></div>
     </div>
     <div id="menu">
-
+        
     </div>
 </body>
 </html>
