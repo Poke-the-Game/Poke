@@ -31,6 +31,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
+app.use('/lib', express.static(__dirname + '/bower_components'))
 app.use(express.static(__dirname + '/static'));
 http.listen(port, function(){
   winston.info('listening on *:'+port.toString());

@@ -4,6 +4,7 @@
   "description": ".",
   "main": "index.js",
   "dependencies": {
+    "bower": "^1.3.12",
     "express": "^4.9.5",
     "node-uuid": "^1.4.1",
     "socket.io": "^1.1.0",
@@ -21,6 +22,6 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "author": "The Poke-The-Game Team <https://github.com/Poke-the-Game",
+  "author": "The Poke-The-Game Team <https://github.com/Poke-the-Game>",
   "license": "MIT"
 }

@@ -10,7 +10,8 @@ Done for [JacobsHack](jacobshack.com) 2014 by @kpj, @moritzmhmk, @nk17 and @tkw1
 ## Install
 
 ```bash
-npm install .
+npm install
+bower install
 ```
 
 ## How to start
@@ -27,7 +28,7 @@ Move your SNAKE to protect your goal and collect the POWERUPS.
 
 Score a GOAL to gain points.
 
-Use UP, RIGHT, DOWN, LEFT or W, A, S, D to control your snake or navigate the menu. 
+Use UP, RIGHT, DOWN, LEFT or W, A, S, D to control your snake or navigate the menu.
 
 Press ENTER to navigate menus.
 

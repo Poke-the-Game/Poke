@@ -1,0 +1,14 @@
+{
+  "name": "Poke",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Poke-the-Game/Poke",
+  "authors": [
+    "The Poke-The-Game Team"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
